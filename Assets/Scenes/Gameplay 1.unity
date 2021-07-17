@@ -315,7 +315,8 @@ GameObject:
   - component: {fileID: 1680219489}
   - component: {fileID: 1680219488}
   - component: {fileID: 1680219490}
-  m_Layer: 0
+  - component: {fileID: 1680219491}
+  m_Layer: 10
   m_Name: Hero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -483,14 +484,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac226a28a1af4d5caa5f2233d189d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 0
   attackPosition: {fileID: 2028099802}
-  attackRange: 0.64
+  attackRange: 0.9
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 512
   minAttackPower: 7
   maxAttackPower: 20
+--- !u!114 &1680219491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680219483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b0201ad54b741f98a827f1414def771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1739931396
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,7 +691,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2028099802}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AttackPoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -28,6 +28,9 @@ public class Enemy : MonoBehaviour
         
         anim.SetBool("DamageRecieve", false);
         
+        Debug.Log("Enemy Health: " + health);
+        
+        
         //check if health of the enemy is still more than 0
         if (health <= 0)
         {

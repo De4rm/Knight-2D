@@ -7,7 +7,7 @@ using Random = System.Random;
 public class HeroAttacks : MonoBehaviour
 {
 
-    [SerializeField] private float attackPower;
+    
 
     private Animator anim;
 
@@ -60,6 +60,7 @@ public class HeroAttacks : MonoBehaviour
         }
         else
         {
+            
             anim.SetBool("Attack1" , false);
             anim.SetBool("Attack2" , false);
             anim.SetBool("Attack3" , false);
