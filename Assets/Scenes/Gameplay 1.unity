@@ -438,7 +438,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.09952736, y: 0.6437247}
+  m_Offset: {x: -0.09952736, y: 0.64929247}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -469,6 +469,8 @@ MonoBehaviour:
   speed: 9
   jumpForce: 40
   heroAttackScript: {fileID: 0}
+  boxCollider2dSizeRollY: 0.7425733
+  boxCollider2DSizeWalkY: 1.176859
 --- !u!114 &1680219490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -667,6 +669,7 @@ MonoBehaviour:
   SecondsBetweenRuns: 2
   maxBoundPosition: 8.04
   minBoundPosition: -1.52
+  canMoveInBounds: 1
 --- !u!1 &2028099801
 GameObject:
   m_ObjectHideFlags: 0

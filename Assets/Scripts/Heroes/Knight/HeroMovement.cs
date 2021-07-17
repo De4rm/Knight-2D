@@ -9,12 +9,18 @@ public class HeroMovement : MonoBehaviour
     private Animator anim;
     private SpriteRenderer spr;
     private BoxCollider2D coll;
+    
    [SerializeField]private LayerMask platformlayerMask;
     
     public float speed = 10f;
     public float jumpForce = 20f;
 
     public HeroAttacks heroAttackScript;
+
+    public float boxCollider2dSizeRollY;
+    public float boxCollider2DSizeWalkY;
+
+    private BoxCollider2D boxCollider2D;
     
     void Awake()
     {
@@ -23,6 +29,9 @@ public class HeroMovement : MonoBehaviour
         spr = GetComponent<SpriteRenderer>();
         coll = GetComponent<BoxCollider2D>();
         heroAttackScript = GetComponent<HeroAttacks>();
+
+        boxCollider2D = GetComponent<BoxCollider2D>();
+
     }
 
     
@@ -95,10 +104,12 @@ public class HeroMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 Move();
+                boxCollider2D.size = new Vector2(boxCollider2D.size.x, boxCollider2dSizeRollY);
                 anim.SetBool("Roll", true);
             }
             else
             {
+                boxCollider2D.size = new Vector2(boxCollider2D.size.x, boxCollider2DSizeWalkY);
                 anim.SetBool("Roll", false);
             }
         }
