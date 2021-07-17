@@ -664,6 +664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595c3db2b761cfb5ba801211b2f90bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SecondsBetweenRuns: 2
   maxBoundPosition: 8.04
   minBoundPosition: -1.52
 --- !u!1 &2028099801

@@ -1,59 +1,88 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
 
-   
+    
+    private Animator anim;
 
-    private float speed = 2f;
-    private float direction = -1;
 
+    [SerializeField] private float SecondsBetweenRuns;
     [SerializeField] private float maxBoundPosition;
     [SerializeField] private float minBoundPosition;
+    
+    private float speed = 2f;
+    private float direction = -1;
+    private float differenceLeftBetweenRun = 0f;
 
+    public bool canMoveInBounds = true;
+
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
 
 
     // Update is called once per frame
     void Update()
     {
-        MoveInBounds();
+        if (canMoveInBounds)
+        {
+            MoveInBounds();
+        }
     }
 
 
 
     void MoveInBounds()
     {
-        Vector2 temp = transform.position;
         
-        if((temp.x < maxBoundPosition) && (temp.x > minBoundPosition))
+        if (differenceLeftBetweenRun <= 0)
         {
-            temp.x += direction * speed * Time.deltaTime;
-        } 
-        else
-        {
-            direction = -direction;
-
-            Quaternion rotation = transform.rotation;
-            if (temp.x >= maxBoundPosition)
+            Vector2 temp = transform.position;
+            
+            if ((temp.x < maxBoundPosition) && (temp.x > minBoundPosition))
             {
-                rotation.y = 0f;
-                temp.x = maxBoundPosition - 0.1f;
+                temp.x += direction * speed * Time.deltaTime;
+                anim.SetBool("Run", true);
             }
             else
             {
-                temp.x = minBoundPosition + 0.1f;
-                rotation.y = 180f;
+                direction = -direction;
+
+                Quaternion rotation = transform.rotation;
+                if (temp.x >= maxBoundPosition)
+                {
+                    rotation.y = 0f;
+                    temp.x = maxBoundPosition - 0.1f;
+                }
+                else
+                {
+                    temp.x = minBoundPosition + 0.1f;
+                    rotation.y = 180f;
+                }
+
+                transform.rotation = rotation;
+
+                differenceLeftBetweenRun = SecondsBetweenRuns;
+
             }
-            transform.rotation = rotation;
+
+            transform.position = temp;
         }
-        
-        transform.position = temp;
-        
+        else
+        {
+            anim.SetBool("Run", false);
+            differenceLeftBetweenRun -= Time.deltaTime;
+        }
+
     }
     
-    
+
 }//class
 
 
