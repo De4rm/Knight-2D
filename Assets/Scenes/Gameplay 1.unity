@@ -502,6 +502,8 @@ GameObject:
   - component: {fileID: 1739931397}
   - component: {fileID: 1739931401}
   - component: {fileID: 1739931400}
+  - component: {fileID: 1739931402}
+  - component: {fileID: 1739931403}
   m_Layer: 0
   m_Name: LightBandit
   m_TagString: Untagged
@@ -584,7 +586,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1739931396}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3969984, y: -1.7159439, z: 0}
+  m_LocalPosition: {x: 8.04, y: -2.218, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -603,7 +605,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.026876807, y: 0.57977843}
+  m_Offset: {x: 0.026876807, y: 0.6066556}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -614,7 +616,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.44283414, y: 1.1595569}
+  m_Size: {x: 0.44283414, y: 1.1058025}
   m_EdgeRadius: 0
 --- !u!50 &1739931401
 Rigidbody2D:
@@ -637,6 +639,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1739931402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739931396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f80eb4a58bac53c7980634b2394f525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+--- !u!114 &1739931403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739931396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 595c3db2b761cfb5ba801211b2f90bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxBoundPosition: 8.04
+  minBoundPosition: -1.52
 --- !u!1 &2028099801
 GameObject:
   m_ObjectHideFlags: 0
