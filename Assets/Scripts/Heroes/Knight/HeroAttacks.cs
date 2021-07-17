@@ -10,8 +10,7 @@ public class HeroAttacks : MonoBehaviour
     [SerializeField] private float attackPower;
 
     private Animator anim;
-    private Rigidbody2D myBody;
-    private SpriteRenderer sr;
+
 
     public Transform attackPosition;
     public float attackRange;
@@ -24,12 +23,11 @@ public class HeroAttacks : MonoBehaviour
     void Awake()
     {
         anim = GetComponent<Animator>();
-        myBody = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
+        
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Attack();
 
@@ -44,6 +42,11 @@ public class HeroAttacks : MonoBehaviour
         {
             Random rd = new Random();
             
+            
+            string str = "Attack" + rd.Next(1, 4);
+            Debug.Log(str);
+            anim.SetBool(str, true);
+            
             Collider2D[] enemiesToDamage =
                 Physics2D.OverlapCircleAll(attackPosition.position, attackRange, enemyLayerMask);
 
@@ -52,8 +55,8 @@ public class HeroAttacks : MonoBehaviour
                 
                 enemy.GetComponent<Enemy>().TakeDamage(rd.Next(minAttackPower, maxAttackPower));
             }
+
             
-            anim.SetBool("Attack" + rd.Next(1,3), true);
         }
         else
         {
@@ -68,14 +71,18 @@ public class HeroAttacks : MonoBehaviour
     }
 
 
-    void AttackTry(KeyCode key, string animationStr)
-    {
-        
-    }
+
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(attackPosition.position, attackRange);
     }
+    
+    
+    
 }//class
+
+
+
+
