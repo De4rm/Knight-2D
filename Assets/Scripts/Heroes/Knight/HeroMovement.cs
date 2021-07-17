@@ -75,7 +75,7 @@ public class HeroMovement : MonoBehaviour
         
         if (IsGrounded())
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 myBody.velocity = new Vector2(myBody.velocity.x, jumpForce);
                 anim.SetBool("Jump", true);

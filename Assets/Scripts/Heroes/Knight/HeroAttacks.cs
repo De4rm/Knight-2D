@@ -44,7 +44,6 @@ public class HeroAttacks : MonoBehaviour
             
             
             string str = "Attack" + rd.Next(1, 4);
-            Debug.Log(str);
             anim.SetBool(str, true);
             
             Collider2D[] enemiesToDamage =

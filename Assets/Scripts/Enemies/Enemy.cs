@@ -27,10 +27,7 @@ public class Enemy : MonoBehaviour
     {
         
         anim.SetBool("DamageRecieve", false);
-        
-        Debug.Log("Enemy Health: " + health);
-        
-        
+
         //check if health of the enemy is still more than 0
         if (health <= 0)
         {
@@ -53,9 +50,9 @@ public class Enemy : MonoBehaviour
 
 
     //method that help change health value outside of this object
-    public void TakeDamage(int damage)
+    public void TakeDamage(int units)
     {
-        health -= damage;
+        health -= units;
         anim.SetBool("DamageRecieve", true);
     }
 
