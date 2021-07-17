@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
 
     //animator object to switch animations
     private Animator anim;
+
+    private EnemyMovement movementScript;
     
     
     
@@ -17,21 +19,32 @@ public class Enemy : MonoBehaviour
     {
         //get component animator from enemy 
         anim = GetComponent<Animator>();
+        movementScript = GetComponent<EnemyMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        anim.SetBool("DamageRecieve", false);
+        
         //check if health of the enemy is still more than 0
         if (health <= 0)
         {
             //start "Dead" trigger in animator
             anim.SetTrigger("Dead");
+            //stop enemy to move after death
+            movementScript.canMoveInBounds = false;
+
+            Vector3 temp = transform.position;
+            temp.z = -2;
+            transform.position = temp;
+            
             //start courotine to destroy dead enemy object
             StartCoroutine("EnemyDie");
         }
         
-        anim.SetBool("DamageRecieve", false);
+        
         
     }
 
