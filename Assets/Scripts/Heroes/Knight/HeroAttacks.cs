@@ -18,8 +18,12 @@ public class HeroAttacks : MonoBehaviour
 
     public int minAttackPower;
     public int maxAttackPower;
+    public float secondsBetweenAttacks;
+
+    private float timeToAttack;
     
-    // Start is called before the first frame update
+    
+    
     void Awake()
     {
         anim = GetComponent<Animator>();
@@ -28,9 +32,8 @@ public class HeroAttacks : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    {
+    { 
         Attack();
-
     }
     
 
@@ -41,21 +44,24 @@ public class HeroAttacks : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             Random rd = new Random();
-            
-            
-            string str = "Attack" + rd.Next(1, 4);
-            anim.SetBool(str, true);
-            
-            Collider2D[] enemiesToDamage =
-                Physics2D.OverlapCircleAll(attackPosition.position, attackRange, enemyLayerMask);
 
-            foreach (Collider2D enemy in enemiesToDamage)
+            if (timeToAttack <= 0)
             {
-                
-                enemy.GetComponent<Enemy>().TakeDamage(rd.Next(minAttackPower, maxAttackPower));
-            }
+                string str = "Attack" + rd.Next(1, 4);
+                anim.SetBool(str, true);
 
-            
+                Collider2D[] enemiesToDamage =
+                    Physics2D.OverlapCircleAll(attackPosition.position, attackRange, enemyLayerMask);
+
+                foreach (Collider2D enemy in enemiesToDamage)
+                {
+
+                    enemy.GetComponent<Enemy>().TakeDamage(rd.Next(minAttackPower, maxAttackPower));
+                    timeToAttack = secondsBetweenAttacks;
+                }
+
+            } 
+
         }
         else
         {
@@ -65,6 +71,7 @@ public class HeroAttacks : MonoBehaviour
             anim.SetBool("Attack3" , false);
         }
 
+        timeToAttack -= Time.deltaTime;
         
        
         

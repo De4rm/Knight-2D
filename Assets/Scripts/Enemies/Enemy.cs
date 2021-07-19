@@ -1,18 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
 
     //Enemy health indicator
-    public int health = 10;
+    public int health;
 
     //animator object to switch animations
     private Animator anim;
 
     private EnemyMovement movementScript;
-    
+
+    public Text txtHealth;
     
     
     void Awake()
@@ -34,7 +36,7 @@ public class Enemy : MonoBehaviour
             //start "Dead" trigger in animator
             anim.SetTrigger("Dead");
             //stop enemy to move after death
-            movementScript.canMoveInBounds = false;
+            movementScript.SetCanMoveInBounds(false);
 
             Vector3 temp = transform.position;
             temp.z = -2;
@@ -43,9 +45,10 @@ public class Enemy : MonoBehaviour
             //start courotine to destroy dead enemy object
             StartCoroutine("EnemyDie");
         }
-        
-        
-        
+
+
+        txtHealth.text = "Bandit health: " + health;
+
     }
 
 
